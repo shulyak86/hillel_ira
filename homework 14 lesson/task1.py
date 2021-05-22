@@ -36,13 +36,16 @@ class Store:
         если поменять имя на inventory.csv - то выдаст ошибку, что только кофе/чай можно
         """
         self.products = []
+        self.cash = 0
+    def __getitem__(self, item):
+        return item
+
 
     def import_products(self):
-        with open('inventory_without_bakery.csv', encoding='UTF-8') as file:
-            file_reader = csv.DictReader(file)
-            #row: dict[str, str]
-            i = 0
-            while i < 5:
+        i = 0
+        while i < 5:
+            with open('inventory_without_bakery.csv', encoding='UTF-8') as file:
+                file_reader = csv.DictReader(file)
                 i += 1
                 for row in file_reader:
                     self.products.append(Product(row.get('Наименование'), row.get('Тип'), row.get('Цена')))
@@ -67,6 +70,17 @@ class Store:
         for product in self.products:
             cost += int(product.pricing())
         return cost
+
+    def sell(self):
+        selling_good = 'Earl Grey'
+        for product in self.products:
+            if selling_good == magaz.__getitem__():
+                self.cash += Product.pricing
+
+
+
+
+
 
 
 magaz = Store()
