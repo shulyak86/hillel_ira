@@ -71,25 +71,33 @@ class Store:
             cost += int(product.pricing())
         return cost
 
-    def sell(self):
-        selling_good = 'Earl Grey'
-        for product in self.products:
-            if selling_good == magaz.__getitem__():
-                self.cash += Product.pricing
-
-
-
-
-
+    def sell(self, selling_good):
+        '''
+        function sells item. it deletes 1 chosen item from list of items and adds its price to cash.
+        :param selling_good: put name of tea or coffee item, you want (Зеленый чай, Имбирный чай, Доппио, Латте..)
+        :return:
+        '''
+        for i in range(len(self.products)):
+            if self.products[i].prod_inf == selling_good:
+                self.cash += int(self.products[i].pricing())
+                del self.products[i]
+                break
 
 
 magaz = Store()
 magaz.import_products()
 magaz.show_assort()
 a = magaz.products[6]
-a.show_products()
 
-print(magaz.total_cost())
-print(magaz.products[6].prod_inf)
+magaz.sell('Earl Grey')
+magaz.sell('Earl Grey')
+magaz.sell('Earl Grey')
+magaz.sell('Earl Grey')
+magaz.sell('Earl Grey')
+magaz.show_assort()
+
+print('Total cost of items left in shop: ', magaz.total_cost())
+#print(magaz.products[6].prod_inf)
+print('In our cashier: ', magaz.cash)
 
 
